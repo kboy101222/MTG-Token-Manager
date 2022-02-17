@@ -8,21 +8,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
-    <title>MTG Token Tracker</title>
+    <title>MTG Tracker</title>
 </head>
 <body>
     <div class="container-fluid text-center">
-        <h1>MTG Token Manager Testing</h1>
-        <div class="btn-group" id="token-interaction" role="group" aria-label="token interaction buttons" style="margin:auto;">
-            <button type="button" name="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add New Item</button>
-            <div class="dropdown-menu" id="newItemList">
-                <a class="dropdown-item" id="NewLifeTracker" onclick="NewLifeTracker()">Life Tracker</a>
-                <a class="dropdown-item" id="NewManaTracker" href="#">Mana Tracker</a>
-                <a class="dropdown-item" id="NewCustomTracker" href="#">Custom Tracker</a>
-                <a class="dropdown-item" id="NewCustomToken" onclick="NewCustomToken()">Custom Token</a>
-                <a class="dropdown-item" id="NewTemplateToken" onclick="testFunction()" href="#">Template Token</a>
+        <h3>MTG Tracker</h3>
+        <div class="btn-group" id="token-interaction" role="group" aria-label="token interaction buttons" style="margin-bottom: 10px;">
+            <div class="btn-group">
+                <button type="button" name="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add New Item</button>
+                <div class="dropdown-menu" id="newItemList">
+                    <a class="dropdown-item" id="NewLifeTracker" onclick="NewLifeTracker()">Life Tracker</a>
+                    <a class="dropdown-item" id="NewManaTracker" onclick="NewManaTracker()">Mana Tracker</a>
+                    <a class="dropdown-item disabled" id="NewCustomTracker">Custom Tracker</a>
+                    <a class="dropdown-item" id="NewCustomToken" onclick="NewCustomToken()">Custom Token</a>
+                    <a class="dropdown-item" id="NewTemplateToken" onclick="testFunction()" href="#">Template Token</a>
+                </div>
             </div>
-            <button type="button" name="button" onclick="DeleteAllCards()" class="btn btn-danger">Remove all items</button>
+            <button type="button" name="button" onclick="DeleteAllCards()" class="btn btn-danger">Remove All Tokens</button>
         </div>
 
         <div id="TokenArea" class="card-columns">
@@ -43,9 +45,13 @@
                         <div class="form-row" id="powerToughness">
                             <div class="col">
                                 <input type="number" class="form-control" name="power" placeholder="Power" min="0">
+                                <input type="checkbox" name="isPowerX" id="isPowerX" value="false">
+                                <label for="isPowerX">Power = "X"</label>
                             </div>
                             <div class="col">
                                 <input type="number" class="form-control" name="toughness" placeholder="Toughness" min="1">
+                                <input type="checkbox" name="isToughnessX" id="isToughnessX" value="false">
+                                <label for="isToughnessX">Toughness = "X"</label>
                             </div>
                         </div>
                     </form>
@@ -68,15 +74,96 @@
                     <form>
                         <p class="card-text text-left">Health: <span id="currHealth">40</span></p>
                         <div class="btn-group" role="group">
-                            <button type="button" name="minusOne" class="btn btn-danger" onclick="AdjustHealth(-1)">-1</button>
-                            <button type="button" name="minusFive" class="btn btn-danger" onclick="AdjustHealth(-5)">-5</button>
                             <button type="button" name="minusTen" class="btn btn-danger" onclick="AdjustHealth(-10)">-10</button>
-                            <button type="button" name="button" class="btn btn-success" onclick="AdjustHealth(1)">+1</button>
-                            <button type="button" name="button" class="btn btn-success" onclick="AdjustHealth(5)">+5</button>
-                            <button type="button" name="button" class="btn btn-success" onclick="AdjustHealth(10)">+10</button>
+                            <button type="button" name="minusFive" class="btn btn-danger" onclick="AdjustHealth(-5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-danger" onclick="AdjustHealth(-1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-success" onclick="AdjustHealth(1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-success" onclick="AdjustHealth(5)">+5</button>
+                            <button type="button" name="plusTen" class="btn btn-success" onclick="AdjustHealth(10)">+10</button>
                         </div>
                         <p class="card-text text-left">Poison: <span id="currPoison">0</span></p>
+                        <div class="btn-group" role="group">
+                            <button type="button" name="button" class="btn btn-success" onclick="AdjustPoison(-1)">-1</button>
+                            <button type="button" name="button" class="btn btn-danger" onclick="AdjustPoison(1)">+1</button>
+                        </div>
                     </form>
+                </div>
+            </div>
+        </template>
+
+        <template id="ManaTrackerTemplate">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mana Tracker</h5>
+                    <div class="bg-light row">
+                        <p class="card-text col-3">White: <span id="whiteMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="minusFive" class="btn btn-light" onclick="AdjustMana('white', -5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-light" onclick="AdjustMana('white', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-light" onclick="AdjustMana('white', 1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-light" onclick="AdjustMana('white', 5)">+5</button>
+                            <button type="button" name="plusFive" class="btn btn-light" onclick="AdjustMana('white', 5, true)">Reset</button>
+                        </div>
+                    </div>
+                    <div class="bg-primary text-light row">
+                        <p class="card-text col-3">Blue: <span id="blueMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="minusFive" class="btn btn-primary" onclick="AdjustMana('blue', -5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-primary" onclick="AdjustMana('blue', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-primary" onclick="AdjustMana('blue', 1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-primary" onclick="AdjustMana('blue', 5)">+5</button>
+                            <button type="button" name="plusFive" class="btn btn-primary" onclick="AdjustMana('blue', 5, true)">Reset</button>
+                        </div>
+                    </div>
+                    <div class="bg-dark text-light row">
+                        <p class="card-text col-3">Black: <span id="blackMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="minusFive" class="btn btn-dark" onclick="AdjustMana('black', -5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-dark" onclick="AdjustMana('black', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-dark" onclick="AdjustMana('black', 1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-dark" onclick="AdjustMana('black', 5)">+5</button>
+                            <button type="button" name="plusFive" class="btn btn-dark" onclick="AdjustMana('black', 5, true)">Reset</button>
+                        </div>
+                    </div>
+                    <div class="bg-danger text-light row">
+                        <p class="card-text col-3">Red: <span id="redMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="minusFive" class="btn btn-danger" onclick="AdjustMana('red', -5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-danger" onclick="AdjustMana('red', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-danger" onclick="AdjustMana('red', 1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-danger" onclick="AdjustMana('red', 5)">+5</button>
+                            <button type="button" name="plusFive" class="btn btn-danger" onclick="AdjustMana('red', 5, true)">Reset</button>
+                        </div>
+                    </div>
+                    <div class="bg-success text-light row">
+                        <p class="card-text col-3">Green: <span id="greenMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="minusFive" class="btn btn-success" onclick="AdjustMana('green', -5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-success" onclick="AdjustMana('green', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-success" onclick="AdjustMana('green', 1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-success" onclick="AdjustMana('green', 5)">+5</button>
+                            <button type="button" name="plusFive" class="btn btn-success" onclick="AdjustMana('green', 5, true)">Reset</button>
+                        </div>
+                    </div>
+                    <div class="bg-secondary text-light row">
+                        <p class="card-text col-3">Colorless: <span id="colorlessMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="minusFive" class="btn btn-secondary" onclick="AdjustMana('colorless', -5)">-5</button>
+                            <button type="button" name="minusOne" class="btn btn-secondary" onclick="AdjustMana('colorless', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-secondary" onclick="AdjustMana('colorless', 1)">+1</button>
+                            <button type="button" name="plusFive" class="btn btn-secondary" onclick="AdjustMana('colorless', 5)">+5</button>
+                            <button type="button" name="plusFive" class="btn btn-secondary" onclick="AdjustMana('colorless', 5, true)">Reset</button>
+                        </div>
+                    </div>
+                    <div class="bg-warning text-dark row">
+                        <p class="card-text col-3">Storm: <span id="stormMana">0</span></p>
+                        <div class="btn-group col-9">
+                            <button type="button" name="plusOne" class="btn btn-warning" onclick="AdjustMana('storm', -1)">-1</button>
+                            <button type="button" name="plusOne" class="btn btn-warning" onclick="AdjustMana('storm', 1)">+1</button>
+                            <button type="button" name="resetStorm" class="btn btn-warning" onclick="AdjustMana('storm', 0, true)">Clear Storm Count</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" name="button" onclick="ResetMana()">Reset Mana</button>
                 </div>
             </div>
         </template>
