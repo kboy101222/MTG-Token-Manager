@@ -16,7 +16,7 @@
         <div class="btn-group" id="token-interaction" role="group" aria-label="token interaction buttons" style="margin:auto;">
             <button type="button" name="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add New Item</button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" id="NewLifeTracker" href="#">Life Tracker</a>
+                <a class="dropdown-item" id="NewLifeTracker" onclick="NewLifeTracker()">Life Tracker</a>
                 <a class="dropdown-item" id="NewManaTracker" href="#">Mana Tracker</a>
                 <a class="dropdown-item" id="NewCustomTracker" href="#">Custom Tracker</a>
                 <a class="dropdown-item" id="NewCustomToken" onclick="NewCustomToken()">Custom Token</a>
@@ -42,10 +42,10 @@
                         <label for="powerToughness">Power & Toughness</label>
                         <div class="form-row" id="powerToughness">
                             <div class="col">
-                                <input type="number" class="form-control" name="power" placeholder="Power">
+                                <input type="number" class="form-control" name="power" placeholder="Power" min="0">
                             </div>
                             <div class="col">
-                                <input type="number" class="form-control" name="toughness" placeholder="Toughness">
+                                <input type="number" class="form-control" name="toughness" placeholder="Toughness" min="1">
                             </div>
                         </div>
                     </form>
@@ -63,7 +63,29 @@
 
         <template id="HealthTrackerTemplate">
             <div class="card" style="width:">
-
+                <div class="card-body">
+                    <h5 class="card-title">Life Tracker</h5>
+                    <form>
+                        <div class="row">
+                            <p class="col-1">Health:</p>
+                            <div class="btn-group col-3" role="group">
+                                <button type="button" name="minusOne" class="btn btn-danger">-1</button>
+                                <button type="button" name="minusFive" class="btn btn-danger">-5</button>
+                                <button type="button" name="minusTen" class="btn btn-danger">-10</button>
+                            </div>
+                            <p class="col">40</p>
+                            <div class="btn-group col-3" role="group">
+                                <button type="button" name="button" class="btn btn-success">+1</button>
+                                <button type="button" name="button" class="btn btn-success">+5</button>
+                                <button type="button" name="button" class="btn btn-success">+10</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="col-1">Poison:</p>
+                            <p class="col">0</p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </template>
     </div>

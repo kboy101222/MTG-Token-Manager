@@ -26,5 +26,12 @@ function NewCustomToken() {
 }
 
 function NewLifeTracker() {
-
+    if('content' in document.createElement('template')){
+        console.log("template element is supported!");
+    }
+    console.log("Life Tracker Created!");
+    var TokenArea = document.querySelector("#TokenArea");
+    var CustomTokenTemplate = document.querySelector('#HealthTrackerTemplate');
+    var NewCustomToken = CustomTokenTemplate.content.cloneNode(true);
+    TokenArea.insertBefore(NewCustomToken, TokenArea.firstChild);
 }
