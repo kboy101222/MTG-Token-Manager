@@ -15,7 +15,7 @@
         <h1>MTG Token Manager Testing</h1>
         <div class="btn-group" id="token-interaction" role="group" aria-label="token interaction buttons" style="margin:auto;">
             <button type="button" name="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add New Item</button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" id="newItemList">
                 <a class="dropdown-item" id="NewLifeTracker" onclick="NewLifeTracker()">Life Tracker</a>
                 <a class="dropdown-item" id="NewManaTracker" href="#">Mana Tracker</a>
                 <a class="dropdown-item" id="NewCustomTracker" href="#">Custom Tracker</a>
@@ -25,13 +25,13 @@
             <button type="button" name="button" onclick="DeleteAllCards()" class="btn btn-danger">Remove all items</button>
         </div>
 
-        <div id="TokenArea" class="card-deck">
+        <div id="TokenArea" class="card-columns">
 
         </div>
 
         <!-- Token Template -->
         <template id="CustomTokenTemplate">
-            <div class="card" style="width: 18rem;">
+            <div class="card tokenCard">
                 <div class="card-body">
                     <h5 class="card-title">Custom Token</h5>
                     <form>
@@ -62,28 +62,20 @@
         </template>
 
         <template id="HealthTrackerTemplate">
-            <div class="card" style="width:">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Life Tracker</h5>
                     <form>
-                        <div class="row">
-                            <p class="col-1">Health:</p>
-                            <div class="btn-group col-3" role="group">
-                                <button type="button" name="minusOne" class="btn btn-danger">-1</button>
-                                <button type="button" name="minusFive" class="btn btn-danger">-5</button>
-                                <button type="button" name="minusTen" class="btn btn-danger">-10</button>
-                            </div>
-                            <p class="col">40</p>
-                            <div class="btn-group col-3" role="group">
-                                <button type="button" name="button" class="btn btn-success">+1</button>
-                                <button type="button" name="button" class="btn btn-success">+5</button>
-                                <button type="button" name="button" class="btn btn-success">+10</button>
-                            </div>
+                        <p class="card-text text-left">Health: <span id="currHealth">40</span></p>
+                        <div class="btn-group" role="group">
+                            <button type="button" name="minusOne" class="btn btn-danger" onclick="AdjustHealth(-1)">-1</button>
+                            <button type="button" name="minusFive" class="btn btn-danger" onclick="AdjustHealth(-5)">-5</button>
+                            <button type="button" name="minusTen" class="btn btn-danger" onclick="AdjustHealth(-10)">-10</button>
+                            <button type="button" name="button" class="btn btn-success" onclick="AdjustHealth(1)">+1</button>
+                            <button type="button" name="button" class="btn btn-success" onclick="AdjustHealth(5)">+5</button>
+                            <button type="button" name="button" class="btn btn-success" onclick="AdjustHealth(10)">+10</button>
                         </div>
-                        <div class="row">
-                            <p class="col-1">Poison:</p>
-                            <p class="col">0</p>
-                        </div>
+                        <p class="card-text text-left">Poison: <span id="currPoison">0</span></p>
                     </form>
                 </div>
             </div>
