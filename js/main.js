@@ -11,6 +11,7 @@ function newCustomToken() {
     console.log("Custom Token Created!");
     var TokenArea = document.querySelector("#TokenArea");
     var CustomTokenTemplate = document.querySelector('#CustomTokenTemplate');
-    TokenArea.appendChild(CustomTokenTemplate);
+    var NewCustomToken = CustomTokenTemplate.content.cloneNode(true);
+    TokenArea.appendChild(NewCustomToken);
     numTokens++;
 }

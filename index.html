@@ -24,43 +24,43 @@
             </div>
             <button type="button" name="button" class="btn btn-danger">Remove all items</button>
         </div>
-    </div>
 
-    <div id="TokenArea">
+        <div id="TokenArea" class="card-deck">
 
-    </div>
+        </div>
 
-    <!-- Token Template -->
-    <template id="CustomTokenTemplate">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Custom Token</h5>
-                <form>
-                    <label for="token-name">Token Name</label>
-                    <input type="text" class="form-control" id="token-name" name="token-name">
-                    <label for="token-body">Token Body</label>
-                    <textarea id="token-body" name="token-body" class="form-control"></textarea>
-                    <label for="powerToughness">Power & Toughness</label>
-                    <div class="form-row" id="powerToughness">
-                        <div class="col">
-                            <input type="number" class="form-control" name="power" placeholder="Power">
+        <!-- Token Template -->
+        <template id="CustomTokenTemplate">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Custom Token</h5>
+                    <form>
+                        <label for="token-name">Token Name</label>
+                        <input type="text" class="form-control" id="token-name" name="token-name">
+                        <label for="token-body">Token Body</label>
+                        <textarea id="token-body" name="token-body" class="form-control"></textarea>
+                        <label for="powerToughness">Power & Toughness</label>
+                        <div class="form-row" id="powerToughness">
+                            <div class="col">
+                                <input type="number" class="form-control" name="power" placeholder="Power">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" name="toughness" placeholder="Toughness">
+                            </div>
                         </div>
-                        <div class="col">
-                            <input type="number" class="form-control" name="toughness" placeholder="Toughness">
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="wrapper text-center">
+                        <div class="btn-group" role="group">
+                            <button type="button" name="save" class="btn btn-primary">Save</button>
+                            <button type="button" name="delete" class="btn btn-danger">Delete</button>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <div class="wrapper text-center">
-                    <div class="btn-group" role="group">
-                        <button type="button" name="save" class="btn btn-primary">Save</button>
-                        <button type="button" name="delete" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </template>
+        </template>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
