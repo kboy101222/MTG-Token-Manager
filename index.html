@@ -11,7 +11,7 @@
     <title>MTG Token Tracker</title>
 </head>
 <body>
-    <div class="wrapper text-center">
+    <div class="container-fluid text-center">
         <h1>MTG Token Manager Testing</h1>
         <div class="btn-group" id="token-interaction" role="group" aria-label="token interaction buttons" style="margin:auto;">
             <button type="button" name="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Add New Item</button>
@@ -19,10 +19,10 @@
                 <a class="dropdown-item" id="NewLifeTracker" href="#">Life Tracker</a>
                 <a class="dropdown-item" id="NewManaTracker" href="#">Mana Tracker</a>
                 <a class="dropdown-item" id="NewCustomTracker" href="#">Custom Tracker</a>
-                <a class="dropdown-item" id="NewCustomToken" onclick="newCustomToken()">Custom Token</a>
+                <a class="dropdown-item" id="NewCustomToken" onclick="NewCustomToken()">Custom Token</a>
                 <a class="dropdown-item" id="NewTemplateToken" onclick="testFunction()" href="#">Template Token</a>
             </div>
-            <button type="button" name="button" class="btn btn-danger">Remove all items</button>
+            <button type="button" name="button" onclick="DeleteAllCards()" class="btn btn-danger">Remove all items</button>
         </div>
 
         <div id="TokenArea" class="card-deck">
@@ -58,6 +58,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </template>
+
+        <template id="HealthTrackerTemplate">
+            <div class="card" style="width:">
+
             </div>
         </template>
     </div>

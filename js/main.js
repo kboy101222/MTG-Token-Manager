@@ -1,10 +1,19 @@
 var numTokens = 0;
 
-function testFunction(){
+function testFunction() {
     alert("Hello, World!");
 }
 
-function newCustomToken() {
+function DeleteAllCards() {
+    var cardsList = document.querySelectorAll(".card");
+    var TokenArea = document.querySelector("#TokenArea")
+    cardsList.forEach((item, i) => {
+        TokenArea.removeChild(item);
+    });
+
+}
+
+function NewCustomToken() {
     if('content' in document.createElement('template')){
         console.log("template element is supported!");
     }
@@ -14,4 +23,8 @@ function newCustomToken() {
     var NewCustomToken = CustomTokenTemplate.content.cloneNode(true);
     TokenArea.appendChild(NewCustomToken);
     numTokens++;
+}
+
+function NewLifeTracker() {
+
 }
